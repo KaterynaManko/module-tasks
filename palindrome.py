@@ -6,3 +6,10 @@ def palindrome(word):
      return True
     else:
      return False
+
+word = "око"
+word_verification = palindrome(word)
+if word_verification:
+    print("Паліндром")
+else:
+    print("Непаліндром")
