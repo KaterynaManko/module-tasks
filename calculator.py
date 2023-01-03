@@ -11,7 +11,7 @@ def calculator(x, action_sign, y):
  elif action_sign == 3:
   z = float(input("Введи число 3 "))   
   logging.info(f"Множу {x} i {y} і {z}\nРезультат {(x * y * z)}")
- elif action_sign == 4:
+ elif action_sign == 4 and y != 0:
   logging.info(f"Ділю {x} i {y}\nРезультат {(x / y)}")
  
 if __name__ == "__main__":
