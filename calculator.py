@@ -2,7 +2,7 @@ import sys
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-def calculator(x, action_sign, y):
+def calculator(*args):
  if action_sign == 1:
   z = float(input("Введи число 3 "))
   logging.info(f"Додаю {x} i {y} і {z}\nРезультат {(x + y + z)}")
