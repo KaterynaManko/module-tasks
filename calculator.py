@@ -18,7 +18,7 @@ def calculator(*args):
   logging.info(f"Ділю {x} i {y}\nРезультат")
   return x / y
  else:
-    logging.info("Введено неправильний оператор")
+    logging.error("Введено неправильний оператор")
   
 if __name__ == "__main__":
  action_sign = int(input("Введи дію, використовуючи відповідне число: 1 Додавання, 2 Віднімання, 3 Множення, 4 Ділення "))
