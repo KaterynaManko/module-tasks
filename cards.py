@@ -1,6 +1,8 @@
 from faker import Faker
 fake = Faker()
 
+from random import randint
+
 class Card:
     def __init__(self, name, company, position, email):
      self.name = name
@@ -45,18 +47,11 @@ def add_business():
 
 
 def create_contacts():
- while True:
-  card_type = input("What type of card would you like to print? base or business?")
-  if card_type != "base" and card_type != "business":
-     exit(1)
+ while True: 
   number = int(input("How many card would you like to print?"))
-  if number < 0 :
-     exit(1)
-  if card_type == "base":
-   for i in range(number):
-    add() 
-  elif card_type == "business":
-   for i in range(number):  
-    add_business()
-   
+  for j in range(randint(1, number)):  
+   add()
+  for i in range(number - j - 1):
+   add_business()
+      
 create_contacts()
