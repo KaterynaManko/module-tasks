@@ -24,15 +24,15 @@ class BaseContact(Card):
      print(f"Я набираю {self.phone_number} і телефоную {self.name} {self.label_length}") 
        
 class BusinessContact(Card):
-    def __init__(self, name, position, company, phone_number):
+    def __init__(self, name, position, company, job_phone_number):
        Card.__init__(self, name = name, position = position, company = company, email = None)
-       self.phone_number = phone_number 
+       self.job_phone_number = job_phone_number 
        
     def __str__(self):
-     return f'{self.name} {self.position} {self.company} {self.phone_number} {self.label_length} ' 
+     return f'{self.name} {self.position} {self.company} {self.job_phone_number} {self.label_length} ' 
        
     def contact(self):
-     print(f"Я набираю {self.phone_number} і телефоную {self.position} {self.name} {self.label_length}") 
+     print(f"Я набираю {self.job_phone_number} і телефоную {self.position} {self.name} {self.label_length}") 
 
 
 def add():
