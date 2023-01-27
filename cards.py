@@ -1,41 +1,37 @@
 from faker import Faker
 fake = Faker()
 
-class CARD:
+class Card:
     def __init__(self, name, company, position, email):
      self.name = name
      self.company = company
      self.position = position
      self.email = email
+     
+    @property 
+    def label_length(self):
+     return len(self.name) - 1
    
-class BaseContact(CARD):
+class BaseContact(Card):
     def __init__(self, name, phone_number, email):
-       CARD.__init__(self, name = name, email = email, company = None, position = None)
+       Card.__init__(self, name = name, email = email, company = None, position = None)
        self.phone_number = phone_number
        
-    @property
-    def label_length(self):
-     return len(self.name) - 1 
- 
     def __str__(self):
      return f'{self.name} {self.phone_number} {self.label_length}'
     
     def contact(self):
      print(f"Я набираю {self.phone_number} і телефоную {self.name} {self.label_length}") 
        
-class BusinessContact(CARD):
+class BusinessContact(Card):
     def __init__(self, name, position, company, phone_number):
-       CARD.__init__(self, name = name, position = position, company = company, email = None)
+       Card.__init__(self, name = name, position = position, company = company, email = None)
        self.phone_number = phone_number 
        
-    @property
-    def label_length(self):
-     return len(self.name) - 1 
-   
     def __str__(self):
      return f'{self.name} {self.position} {self.company} {self.phone_number} {self.label_length} ' 
        
-    def contact_business(self):
+    def contact(self):
      print(f"Я набираю {self.phone_number} і телефоную {self.position} {self.name} {self.label_length}") 
 
 
@@ -45,7 +41,7 @@ def add():
  
 def add_business():
   card = BusinessContact(fake.name(), fake.job(), fake.company(), fake.phone_number())
-  card.contact_business()
+  card.contact()
 
 
 def create_contacts():
