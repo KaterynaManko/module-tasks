@@ -1,7 +1,7 @@
 from faker import Faker
 fake = Faker()
 
-from random import randint
+import random
 
 class Card:
     def __init__(self, name, company, position, email):
@@ -36,22 +36,16 @@ class BusinessContact(Card):
     def contact(self):
      print(f"Я набираю {self.job_phone_number} і телефоную {self.position} {self.name} {self.label_length}") 
 
-
-def add():
-  card = BaseContact(fake.name(), fake.phone_number(), fake.email())
-  card.contact()
- 
-def add_business():
-  card = BusinessContact(fake.name(), fake.job(), fake.company(), fake.phone_number())
-  card.contact()
-
-
 def create_contacts():
- while True: 
-  number = int(input("How many card would you like to print?"))
-  for j in range(randint(1, number)):  
-   add()
-  for i in range(number - j - 1):
-   add_business()
-      
-create_contacts()
+   number = int(input("How many card would you like to print?")) 
+   types = [BaseContact, BusinessContact]
+   for i in range(number):
+    card_type = random.choice(types)
+    if card_type == BaseContact:
+     BaseContact(fake.name(), fake.phone_number(), fake.email()).contact()
+    elif card_type == BusinessContact:
+     BusinessContact(fake.name(), fake.job(), fake.company(), fake.phone_number()).contact() 
+
+while True:  
+  create_contacts()
+ 
