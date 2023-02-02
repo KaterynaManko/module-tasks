@@ -13,6 +13,9 @@ class Film:
      
      def play(self):
       self.number_view += 1
+      
+     def generate_play(self, value):
+      self.number_view += value 
            
      def show(self):
       print(f"{self.name}\t({self.year_graduate})\t{self.genre}\tПереглядів: {self.number_view}")
@@ -55,24 +58,26 @@ class Filmoteka():
      movie.show() 
      
  def show_films(self): 
-  for movie in  self.list_movies:
-   if isinstance(movie, Serial) == False:
+  by_name = sorted(self.list_movies, key=lambda movie: movie.name)  
+  for movie in  by_name:
+   if not isinstance(movie, Serial):
       movie.show()
       
- def show_serials(self): 
-  for movie in  self.list_movies:
-   if isinstance(movie, Serial) == True:
+ def show_serials(self):
+  by_name = sorted(self.list_movies, key=lambda movie: movie.name)   
+  for movie in  by_name:
+   if isinstance(movie, Serial):
       movie.show() 
       
- def generate_views(self):  
+ def generate_views(self):
   random_list_movies = random.choice(self.list_movies)
-  generate_number = [movie for movie in range(0, 101)]
-  for j in range(random.choice(generate_number)):
-   print(random_list_movies) 
+  value = random.randint(1, 100)
+  random_list_movies.generate_play(value)
+  print(random_list_movies)
    
  def top_titles(self):
-  by_name = sorted(self.list_movies, key=lambda movie: movie.number_view) 
-  print(by_name[-3:])
+  by_number_view = sorted(self.list_movies, key=lambda movie: movie.number_view) 
+  print(by_number_view[-3:])
       
       
 film1 = Film("Титанік", 1997, "Драма", 234)
